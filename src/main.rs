@@ -18,7 +18,7 @@ enum Coin {
 fn value_in_cents(coin: &Coin) -> u8 {
     match coin {
 	Coin::Penny => {
-	    println!("Lucky Penny:{:?}", coin);
+	    println!("{:>14}{:*^11}", format!("Lucky Penny:"), format!("{:?}", coin));
 	    1
 	}
 	Coin::Nickel => 5,
@@ -35,7 +35,7 @@ impl Rectangle {
 
 fn enum_coins() {
     for k in Coin::iter() {
-	println!("{:?} value:{} cts.", k, value_in_cents(&k));
+	println!("{: >7} value:{:>02} cts.", format!("{:?}", k), value_in_cents(&k));
     }
 }
 

@@ -18,7 +18,7 @@ enum Coin {
 fn value_in_cents(coin: &Coin) -> u8 {
     match coin {
 	Coin::Penny => {
-	    println!("{:>14}{:*^11}", format!("Lucky Penny:"), format!("{:?}", coin));
+	    println!("{:>14}{:*^11}", "Lucky Penny:", format_args!("{:?}", coin));
 	    1
 	}
 	Coin::Nickel => 5,
@@ -44,9 +44,25 @@ fn rect_area() {
     println!("Rectangle({},{}):{:?}->area:{}", r.width, r.height, r, r.area());
 }
 
+fn plus_one(opt: Option<u32>) -> Option<u32> {
+    match opt {
+	None => None,
+	Some(_) => opt.map(|o| o+1),
+    }
+}
+
+fn match_option() {
+    let five = Some(5);
+    let six = plus_one(five);
+    let none = plus_one(None);
+    println!("{:?} {:?} {:?}", five, six, none);
+    println!("{:?} {:?} {:?}", five.unwrap(), six.unwrap(), none);
+}
+
 fn go() {
     rect_area();
     enum_coins();
+    match_option();
 }
 
 fn main() {
